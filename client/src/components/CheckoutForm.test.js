@@ -27,7 +27,7 @@ test("form shows success message on submit with form details", async () => {
   fireEvent.change(state, { target: { value: "FL" } });
   fireEvent.change(zip, { target: { value: "34219" } });
 
-  const submit = screen.getByRole("submitBtn");
+  const submit = screen.getByRole("button");
   fireEvent.click(submit);
 
   const fnameSub = await screen.findByText(/chris/i);
