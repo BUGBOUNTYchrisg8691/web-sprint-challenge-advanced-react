@@ -30,6 +30,9 @@ test("form shows success message on submit with form details", async () => {
   const submit = screen.getByRole("button");
   fireEvent.click(submit);
 
+  const confirmation = await screen.findByText(
+    "You have ordered some plants! Woo-hoo!"
+  );
   const fnameSub = await screen.findByText(/chris/i);
   const lnameSub = await screen.findByText(/girvin/i);
   const addrSub = await screen.findByText(/111 cool street/i);
@@ -37,6 +40,7 @@ test("form shows success message on submit with form details", async () => {
   const stateSub = await screen.findByText(/fl/i);
   const zipSub = await screen.findByText(/34219/);
 
+  expect(confirmation).toBeTruthy();
   expect(fnameSub).toBeTruthy();
   expect(lnameSub).toBeTruthy();
   expect(addrSub).toBeTruthy();
