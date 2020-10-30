@@ -251,3 +251,37 @@ pre {
   color: #0e101c;
   border-bottom: 2px solid !important;
 }
+
+.links-heading {
+  color: whitesmoke;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+}
+
+.links button {
+  margin: 10px; 
+}
+
+.lightMode form,
+.lightMode {
+  background: lightblue;
+}
+
+.lightMode h1,
+.lightMode h2,
+.lightMode h3,
+.lightMode label,
+.lightMode p {
+  color: navy;
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: flex-end;
+}
