@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useForm } from "../hooks/useForm";
 
-const initialValue = {
+const initialValues = {
   firstName: "",
   lastName: "",
   address: "",
@@ -13,17 +14,18 @@ const initialValue = {
 // Build out the logic needed for a form custom hook (see the useForm.js file)
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
-const CheckoutForm = (props) => {
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [values, setValues] = useState(initialValue);
+const CheckoutForm = () => {
+  const [values, lStorage, showSuccessMessage, onChange, onSubmit] = useForm(
+    initialValues
+  );
 
   const handleChanges = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+    onChange(e);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowSuccessMessage(true);
+    onSubmit();
   };
 
   return (
@@ -66,7 +68,7 @@ const CheckoutForm = (props) => {
           Zip:
           <input name="zip" value={values.zip} onChange={handleChanges} />
         </label>
-        <button>Checkout</button>
+        <button data-testid="submitBtn">Checkout</button>
       </form>
 
       {showSuccessMessage && (
@@ -78,11 +80,11 @@ const CheckoutForm = (props) => {
           <br />
           <br />
           <p>
-            {values.firstName} {values.lastName}
+            {lStorage.firstName} {lStorage.lastName}
           </p>
-          <p>{values.address}</p>
+          <p>{lStorage.address}</p>
           <p>
-            {values.city}, {values.state} {values.zip}
+            {lStorage.city}, {lStorage.state} {lStorage.zip}
           </p>
         </div>
       )}
